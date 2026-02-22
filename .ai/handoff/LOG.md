@@ -55,16 +55,16 @@ npx tsc --noEmit → 0 errors (strict mode)
 
 ## 2026-02-22 — P4 Discussion Round (GPT Second Opinion)
 
-- Unabhängiges Review der Sonnet-Implementierung (Commit `42b2f04`) durchgeführt für:
+- Independent review of the Sonnet implementation (Commit `42b2f04`) performed for:
   - `src/index.ts`
   - `src/fetcher.ts`
   - `src/notifier.ts`
   - `src/ghostPublisher.ts`
-- Ergebnis dokumentiert in `.ai/handoff/REVIEW-GPT.md`.
-- Positiv bewertet: Modultrennung, Fehlerisolation, Logging, Ghost-JWT/API-Handling.
-- Hauptkritikpunkt: `notifier.ts` nutzt `execSync` mit Shell-Command-String; trotz Escaping bleibt dies unnötig riskant.
-- Empfehlung: Wechsel auf `spawn/execFile` mit Argument-Array + Channel-Allowlist.
-- Edge-Case-Check bestätigt: leere Feeds/keine CVEs führen zu leerem, aber gültigem Digest; Ghost-Ausfall wird korrekt als non-fatal behandelt und im Notify reflektiert.
+- Result documented in `.ai/handoff/REVIEW-GPT.md`.
+- Positively assessed: module separation, error isolation, logging, Ghost JWT/API handling.
+- Main criticism: `notifier.ts` uses `execSync` with a shell command string; despite escaping, this remains unnecessarily risky.
+- Recommendation: switch to `spawn/execFile` with argument array + channel allowlist.
+- Edge case check confirmed: empty feeds/no CVEs result in an empty but valid digest; Ghost failure is correctly handled as non-fatal and reflected in the notification.
 
 ## 2026-02-22 — Project Initialized
 

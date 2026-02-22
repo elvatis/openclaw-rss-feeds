@@ -1,23 +1,23 @@
 # P4 Review — GPT (Second Opinion)
 
 ## Positives
-- **Saubere Modultrennung**: `index` orchestriert, Fachlogik liegt in `fetcher`, `cveFetcher`, `formatter`, `ghostPublisher`, `notifier`.
-- **Resiliente Fehlerstrategie**: Feed-, CVE-, Ghost- und Notify-Fehler sind weitgehend nicht-fatal; der Digest läuft weiter.
-- **Nachvollziehbare Logs**: Gute Operability durch klare Info/Warn/Error-Meldungen.
-- **Ghost-Integration solide**: JWT-Erzeugung ist korrekt aufgebaut (kid/aud/exp), API-Errors werden mit Response-Body zurückgegeben.
-- **Pragmatisches Datenmodell**: `FeedResult`/`DigestResult` sind für Reporting und spätere Erweiterungen gut geeignet.
+- **Clean module separation**: `index` orchestrates, business logic lives in `fetcher`, `cveFetcher`, `formatter`, `ghostPublisher`, `notifier`.
+- **Resilient error strategy**: Feed, CVE, Ghost, and notify errors are largely non-fatal; the digest continues running.
+- **Traceable logs**: Good operability through clear Info/Warn/Error messages.
+- **Solid Ghost integration**: JWT generation is correctly implemented (kid/aud/exp), API errors are returned with response body.
+- **Pragmatic data model**: `FeedResult`/`DigestResult` are well-suited for reporting and future extensions.
 
-## Verbesserungsvorschläge
-- **`index.ts` etwas entkoppeln**: `runDigest` macht viele Dinge (Fetch, Enrichment, Title, Publish, Notify). Lesbarkeit/Tests würden von kleineren Schritten profitieren (z. B. `buildTitle`, `publishIfConfigured`, `notifyIfConfigured`).
-- **Zeitfenster klarer dokumentieren**: Aktuell `[startDate, endDate)` bis "Start heute". Das ist korrekt, aber leicht missverständlich (heutige Einträge sind bewusst ausgeschlossen).
-- **Dedupe-Key robuster machen**: `title::link` ist ok, aber bei leeren Links oder Titeländerungen fragil. Optional GUID/normalized URL/hash als Fallback.
-- **Produkt-/Versions-Parsing in `fetcher.ts` ist Fortinet-lastig**: Für generische Feeds wäre ein erweiterbares Mapping/Strategy-Pattern sinnvoll.
-- **Sortierung/Versioning**: Semver-nahe Parser wären robuster als manuelles Split/Number (z. B. bei ungewöhnlichen Versionstrings).
+## Suggestions for Improvement
+- **Decouple `index.ts` a bit more**: `runDigest` does many things (fetch, enrichment, title, publish, notify). Readability/tests would benefit from smaller steps (e.g. `buildTitle`, `publishIfConfigured`, `notifyIfConfigured`).
+- **Document time window more clearly**: Currently `[startDate, endDate)` up to "start of today". This is correct but slightly ambiguous (today's entries are intentionally excluded).
+- **Make dedupe key more robust**: `title::link` is fine, but fragile with empty links or title changes. Optional GUID/normalized URL/hash as fallback.
+- **Product/version parsing in `fetcher.ts` is Fortinet-heavy**: For generic feeds, an extensible mapping/strategy pattern would be useful.
+- **Sorting/versioning**: Semver-like parsers would be more robust than manual split/number (e.g. for unusual version strings).
 
-## Sicherheitsbedenken
-- **Shell-Injection-Risiko in `notifier.ts`**: Aktuell wird `execSync` mit Shell-Command-String genutzt. Zwar ist `shellEscape()` vorhanden (guter Schritt), aber String-basierte Shell-Ausführung bleibt grundsätzlich riskanter und fehleranfälliger.
-- **Empfehlung**: auf `spawn`/`execFile` mit Argument-Array wechseln (ohne Shell), dann entfällt die Escape-Klasse weitgehend.
-- **Zusatzpunkt**: `channel` gegen Allowlist prüfen (z. B. `whatsapp|telegram|discord`), um Missbrauch über manipulierte Targets zu begrenzen.
+## Security Concerns
+- **Shell injection risk in `notifier.ts`**: Currently `execSync` is used with a shell command string. While `shellEscape()` is present (a good step), string-based shell execution remains fundamentally riskier and more error-prone.
+- **Recommendation**: Switch to `spawn`/`execFile` with an argument array (without shell), which largely eliminates the escaping class of issues.
+- **Additional point**: Validate `channel` against an allowlist (e.g. `whatsapp|telegram|discord`) to limit abuse via manipulated targets.
 
-## Fazit
-Starke, gut strukturierte Erstimplementierung mit guter Fehlerrobustheit. Wichtigster Verbesserungshebel ist **`notifier.ts` von Shell-String-Ausführung auf argumentbasierte Prozessaufrufe ohne Shell umzustellen**, um das Injection-/Escaping-Risiko nachhaltig zu minimieren.
+## Conclusion
+Strong, well-structured initial implementation with good error resilience. The most important improvement lever is **switching `notifier.ts` from shell-string execution to argument-based process invocation without shell**, to sustainably minimize the injection/escaping risk.
