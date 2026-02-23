@@ -1,5 +1,5 @@
 {
-  "name": "@elvatis/openclaw-rss-feeds",
+  "name": "@elvatis_com/openclaw-rss-feeds",
   "version": "0.1.0",
   "description": "OpenClaw plugin — RSS/Atom feed digest with CVE enrichment and Ghost CMS drafts",
   "main": "dist/index.js",
