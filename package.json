@@ -19,6 +19,10 @@
   "keywords": ["openclaw", "openclaw-plugin", "rss", "feeds", "cve", "security", "digest", "ghost"],
   "author": "Elvatis <hello@example.invalid>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elvatis/openclaw-rss-feeds.git"
+  },
   "openclaw": {
     "extensions": ["./dist/index.js"]
   },
