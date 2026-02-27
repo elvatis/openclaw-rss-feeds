@@ -58,7 +58,7 @@
     "phase": "maintenance",
     "session_id": "t004-retry-backoff",
     "duration_minutes": 5,
-    "commit": ""
+    "commit": "aa42236"
   },
   "files": {
     "NEXT_ACTIONS.md": {
