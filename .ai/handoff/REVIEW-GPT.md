@@ -1,4 +1,4 @@
-# P4 Review — GPT (Second Opinion)
+# P4 Review - GPT (Second Opinion)
 
 ## Positives
 - **Clean module separation**: `index` orchestrates, business logic lives in `fetcher`, `cveFetcher`, `formatter`, `ghostPublisher`, `notifier`.

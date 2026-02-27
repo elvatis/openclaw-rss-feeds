@@ -1,4 +1,4 @@
-# openclaw-rss-feeds — Research Notes (P1 Sonar)
+# openclaw-rss-feeds - Research Notes (P1 Sonar)
 Date: 2026-02-22
 
 ---
@@ -53,7 +53,7 @@ Use `rss-parser`. No alternative needed - it's the de-facto standard and TypeScr
 - **With API key:** 50 requests / 30 seconds
 - **NIST recommendation:** sleep 6s between requests
 - **Max results:** 2000 per request
-- API key is FREE from nvd.nist.gov — just register
+- API key is FREE from nvd.nist.gov - just register
 
 ### TypeScript fetch
 ```typescript
@@ -112,12 +112,12 @@ const res = await fetch(`${ghostUrl}/ghost/api/admin/posts/?source=html`, {
 ```
 
 ### Key notes
-- Token expires in 5min — regenerate per request
-- `aud` must be `/admin/` (not `/v4/admin/` — our bash script uses `/admin/` and works)
+- Token expires in 5min - regenerate per request
+- `aud` must be `/admin/` (not `/v4/admin/` - our bash script uses `/admin/` and works)
 - `source=html` in query string = use HTML body instead of mobiledoc
 
 ### Recommendation
-Use `jsonwebtoken`. No Ghost JS SDK needed — plain fetch works fine.
+Use `jsonwebtoken`. No Ghost JS SDK needed - plain fetch works fine.
 
 ---
 
@@ -127,7 +127,7 @@ Use `jsonwebtoken`. No Ghost JS SDK needed — plain fetch works fine.
 
 ### Available scheduling options from a plugin
 
-**Option A — `api.registerService()` + node-cron**
+**Option A - `api.registerService()` + node-cron**
 ```typescript
 import cron from 'node-cron';
 
@@ -142,11 +142,11 @@ api.registerService({
 - `node-cron` npm: standard Node.js cron library
 - Plugin starts its own background service with internal cron
 
-**Option B — Gateway cron.add RPC**
+**Option B - Gateway cron.add RPC**
 - Plugin registers a Gateway RPC method that the cron system can call
 - More complex, less self-contained
 
-**Option C — Manual trigger only (skip auto-schedule)**
+**Option C - Manual trigger only (skip auto-schedule)**
 - Plugin exposes a `rss_run_digest` agent tool
 - Emre or the heartbeat calls it manually
 - Simplest for v0.1
@@ -161,11 +161,11 @@ Default: schedule via `node-cron` in `registerService`. If `config.schedule` is 
 
 | Decision                     | Recommendation                                      |
 | ---------------------------- | --------------------------------------------------- |
-| RSS parsing                  | `rss-parser` npm — TypeScript native, no brainer    |
+| RSS parsing                  | `rss-parser` npm - TypeScript native, no brainer    |
 | CVE enrichment               | NVD API v2.0 via fetch, optional `nvdApiKey` config |
 | Ghost auth                   | `jsonwebtoken` npm, HS256, regenerate per call      |
 | Scheduling                   | `node-cron` in `api.registerService()` + manual tool |
-| Python subprocess?           | NO — pure TypeScript; all deps available as npm     |
+| Python subprocess?           | NO - pure TypeScript; all deps available as npm     |
 | Dependencies (total)         | `rss-parser`, `jsonwebtoken`, `node-cron`           |
 
 ### Open decisions for Opus

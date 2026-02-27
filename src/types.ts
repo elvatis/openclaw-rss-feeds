@@ -1,4 +1,4 @@
-// @elvatis/openclaw-rss-feeds — Shared TypeScript types
+// @elvatis/openclaw-rss-feeds - Shared TypeScript types
 
 export interface FeedConfig {
   id: string;

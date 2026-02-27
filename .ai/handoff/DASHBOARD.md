@@ -1,6 +1,6 @@
-# openclaw-rss-feeds — Dashboard
+# openclaw-rss-feeds - Dashboard
 
-> Phase: P4 ✅ (Opus review done — APPROVED with fixes applied)
+> Phase: P4 ✅ (Opus review done - APPROVED with fixes applied)
 
 ## Pipeline Status
 

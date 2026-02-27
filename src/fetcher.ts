@@ -1,4 +1,4 @@
-// @elvatis/openclaw-rss-feeds — RSS/Atom feed fetcher
+// @elvatis/openclaw-rss-feeds - RSS/Atom feed fetcher
 import Parser from 'rss-parser';
 import type { FeedConfig, FeedItem, FirmwareEntry } from './types';
 

@@ -1,4 +1,4 @@
-# openclaw-rss-feeds — Status
+# openclaw-rss-feeds - Status
 
 > Last updated: 2026-02-23
 > Phase: P4 complete (Review + Docs + Push)

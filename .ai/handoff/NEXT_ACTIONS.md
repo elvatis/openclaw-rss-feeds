@@ -1,4 +1,4 @@
-# openclaw-rss-feeds — Next Actions
+# openclaw-rss-feeds - Next Actions
 
 ## Current State
 

@@ -1,6 +1,6 @@
-# openclaw-rss-feeds — Log
+# openclaw-rss-feeds - Log
 
-## 2026-02-23 — P4 Finalization (Subagent)
+## 2026-02-23 - P4 Finalization (Subagent)
 
 Completed review, tests, docs, and repository push for plugin finalization.
 
@@ -27,30 +27,30 @@ Completed review, tests, docs, and repository push for plugin finalization.
 - `npm test` passed: **7/7 tests green**.
 
 
-## 2026-02-22 — P4 Review (Opus — Architect)
+## 2026-02-22 - P4 Review (Opus - Architect)
 
 **Critical fixes applied, APPROVED for v0.1.0-beta**
 
 - Reviewed all 6 modules against ADR-001: all 6 decisions correctly implemented
 - Plugin API usage (registerService + registerTool) verified against OpenClaw plugin spec
-- **CRITICAL FIX:** Replaced `execSync` with `execFileSync` in notifier.ts — eliminates shell injection vector
-- **CRITICAL FIX:** Added outer try/catch around Ghost publish block in index.ts — defensive non-fatal handling
+- **CRITICAL FIX:** Replaced `execSync` with `execFileSync` in notifier.ts - eliminates shell injection vector
+- **CRITICAL FIX:** Added outer try/catch around Ghost publish block in index.ts - defensive non-fatal handling
 - 5 minor issues documented (console.warn in cveFetcher, Fortinet-specific heuristics, missing plugin manifest, dryRun pattern, no RSS retry)
 - `npx tsc --noEmit` → 0 errors after fixes
 - Commit: 032b474
 
-## 2026-02-22 — P3 Implementation (Sonnet)
+## 2026-02-22 - P3 Implementation (Sonnet)
 
-**6 modules implemented — TypeScript strict mode, 0 errors**
+**6 modules implemented - TypeScript strict mode, 0 errors**
 
 ### Files Created
-- `src/types.ts` — All shared interfaces: PluginConfig, FeedConfig, GhostConfig, FeedItem, FirmwareEntry, CveEntry, FeedResult, DigestResult, PluginApi, PluginService, PluginTool
-- `src/fetcher.ts` — RSS/Atom feed fetcher using `rss-parser`. Features: date window filtering, keyword matching, dedup via Set (title::link key), firmware detection + version extraction, Fortinet docs URL generation, product sorting
-- `src/cveFetcher.ts` — NVD CVE API v2.0 client. Features: per-keyword requests, CVSS score extraction (V3.1 → V3.0 → V2 fallback), CPE-based vendor matching, 6s rate-limit sleep, optional apiKey header, all errors caught (returns [])
-- `src/formatter.ts` — HTML digest builder with two exports: `formatDigest` (full HTML doc) and `formatDigestBody` (Ghost-ready fragment). Features: per-feed sections (firmware table + CVE table + news items), summary header, combined CVE view for multi-feed digests, color-coded severity badges
-- `src/ghostPublisher.ts` — Ghost Admin API draft publisher. Features: JWT HS256 with keyid (valid 5 min), hex secret decode from id:secret format, POST /ghost/api/admin/posts/?source=html, full error catch → returns {success, postId, postUrl, error}
-- `src/notifier.ts` — Channel notifier via openclaw CLI subprocess. Features: channel:target format parsing, shell-safe escaping, execSync with 30s timeout, per-target error isolation, `buildDigestNotification` helper for consistent message format
-- `src/index.ts` — Plugin entry. Features: `runDigest()` orchestrates all modules sequentially, `registerService` with node-cron (if schedule configured), `registerTool("rss_run_digest")` with optional dryRun flag, structured logging via api.logger
+- `src/types.ts` - All shared interfaces: PluginConfig, FeedConfig, GhostConfig, FeedItem, FirmwareEntry, CveEntry, FeedResult, DigestResult, PluginApi, PluginService, PluginTool
+- `src/fetcher.ts` - RSS/Atom feed fetcher using `rss-parser`. Features: date window filtering, keyword matching, dedup via Set (title::link key), firmware detection + version extraction, Fortinet docs URL generation, product sorting
+- `src/cveFetcher.ts` - NVD CVE API v2.0 client. Features: per-keyword requests, CVSS score extraction (V3.1 → V3.0 → V2 fallback), CPE-based vendor matching, 6s rate-limit sleep, optional apiKey header, all errors caught (returns [])
+- `src/formatter.ts` - HTML digest builder with two exports: `formatDigest` (full HTML doc) and `formatDigestBody` (Ghost-ready fragment). Features: per-feed sections (firmware table + CVE table + news items), summary header, combined CVE view for multi-feed digests, color-coded severity badges
+- `src/ghostPublisher.ts` - Ghost Admin API draft publisher. Features: JWT HS256 with keyid (valid 5 min), hex secret decode from id:secret format, POST /ghost/api/admin/posts/?source=html, full error catch → returns {success, postId, postUrl, error}
+- `src/notifier.ts` - Channel notifier via openclaw CLI subprocess. Features: channel:target format parsing, shell-safe escaping, execSync with 30s timeout, per-target error isolation, `buildDigestNotification` helper for consistent message format
+- `src/index.ts` - Plugin entry. Features: `runDigest()` orchestrates all modules sequentially, `registerService` with node-cron (if schedule configured), `registerTool("rss_run_digest")` with optional dryRun flag, structured logging via api.logger
 
 ### Key Decisions Made During Implementation
 - Used `formatDigestBody` (not full HTML doc) for Ghost to avoid duplicate `<html>` wrappers
@@ -65,7 +65,7 @@ npm install → 137 packages installed
 npx tsc --noEmit → 0 errors (strict mode)
 ```
 
-## 2026-02-22 — P2 Architecture Decision (Opus)
+## 2026-02-22 - P2 Architecture Decision (Opus)
 
 - **ADR-001** written: 6 architecture decisions documented
 - D1: Pure TypeScript (no Python subprocess)
@@ -80,7 +80,7 @@ npx tsc --noEmit → 0 errors (strict mode)
 - Module structure: 6 source files + types.ts
 - Error strategy: per-feed isolation, non-fatal CVE/notification failures, structured logging
 
-## 2026-02-22 — P4 Discussion Round (GPT Second Opinion)
+## 2026-02-22 - P4 Discussion Round (GPT Second Opinion)
 
 - Independent review of the Sonnet implementation (Commit `42b2f04`) performed for:
   - `src/index.ts`
@@ -93,7 +93,7 @@ npx tsc --noEmit → 0 errors (strict mode)
 - Recommendation: switch to `spawn/execFile` with argument array + channel allowlist.
 - Edge case check confirmed: empty feeds/no CVEs result in an empty but valid digest; Ghost failure is correctly handled as non-fatal and reflected in the notification.
 
-## 2026-02-22 — Project Initialized
+## 2026-02-22 - Project Initialized
 
 - Repo cloned from github.com/homeofe/openclaw-rss-feeds
 - AAHP handoff structure created
