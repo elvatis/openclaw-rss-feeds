@@ -1,0 +1,69 @@
+{
+  "quick_context": "openclaw-rss-feeds P4 complete, pushed to main. Release preparation and optional hardening tasks remaining.",
+  "aahp_version": "3.0",
+  "next_task_id": 6,
+  "token_budget": {
+    "manifest_only": 100,
+    "full_read": 1200,
+    "manifest_plus_core": 400
+  },
+  "tasks": {
+    "T-001": {
+      "created": "2026-02-28T00:00:00Z",
+      "priority": "high",
+      "status": "ready",
+      "title": "Bump version and run npm pack sanity check",
+      "depends_on": []
+    },
+    "T-004": {
+      "created": "2026-02-28T00:00:00Z",
+      "priority": "low",
+      "status": "ready",
+      "title": "Add retry/backoff option for RSS fetches",
+      "depends_on": []
+    },
+    "T-002": {
+      "title": "Publish npm package @elvatis/openclaw-rss-feeds",
+      "note": "Manual human step - agent should prepare but not execute",
+      "depends_on": [
+        "T-001"
+      ],
+      "status": "ready",
+      "created": "2026-02-28T00:00:00Z",
+      "priority": "high"
+    },
+    "T-003": {
+      "created": "2026-02-28T00:00:00Z",
+      "priority": "medium",
+      "status": "ready",
+      "title": "Submit plugin to OpenClaw community catalog (README + config example)",
+      "depends_on": [
+        "T-002"
+      ]
+    },
+    "T-005": {
+      "created": "2026-02-28T00:00:00Z",
+      "priority": "medium",
+      "status": "ready",
+      "title": "Add integration test for full rss_run_digest flow with mocked dependencies",
+      "depends_on": []
+    }
+  },
+  "project": "openclaw-rss-feeds",
+  "last_session": {
+    "agent": "human",
+    "timestamp": "2026-02-28T00:00:00Z",
+    "phase": "maintenance",
+    "session_id": "p4-done",
+    "duration_minutes": 0,
+    "commit": ""
+  },
+  "files": {
+    "NEXT_ACTIONS.md": {
+      "lines": 25,
+      "updated": "2026-02-28T00:00:00Z",
+      "checksum": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+      "summary": "5 tasks: version bump, npm publish, community submission, retry/backoff, integration test."
+    }
+  }
+}
