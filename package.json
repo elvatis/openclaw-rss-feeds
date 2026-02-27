@@ -1,9 +1,14 @@
 {
   "name": "@elvatis_com/openclaw-rss-feeds",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "OpenClaw plugin - RSS/Atom feed digest with CVE enrichment and Ghost CMS drafts",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "!dist/__tests__",
+    "openclaw.plugin.json"
+  ],
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",

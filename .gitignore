@@ -3,6 +3,7 @@ node_modules/
 dist/
 *.js.map
 *.log
+*.tgz
 
 # Python GPU service
 venv/
