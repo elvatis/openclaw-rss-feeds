@@ -1,7 +1,7 @@
 {
   "quick_context": "T-005 done: integration test added for full rss_run_digest flow (5 tests covering happy path, error handling, dry run, empty feeds, Ghost failure). Build clean, 17 tests pass. All tasks complete.",
   "aahp_version": "3.0",
-  "next_task_id": 7,
+  "next_task_id": 9,
   "token_budget": {
     "manifest_only": 100,
     "full_read": 1200,
