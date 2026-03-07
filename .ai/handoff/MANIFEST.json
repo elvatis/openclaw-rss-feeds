@@ -1,7 +1,7 @@
 {
   "quick_context": "T-005 done: integration test added for full rss_run_digest flow (5 tests covering happy path, error handling, dry run, empty feeds, Ghost failure). Build clean, 17 tests pass. All tasks complete.",
   "aahp_version": "3.0",
-  "next_task_id": 9,
+  "next_task_id": 10,
   "token_budget": {
     "manifest_only": 100,
     "full_read": 1200,
@@ -52,6 +52,16 @@
       "title": "Add integration test for full rss_run_digest flow with mocked dependencies",
       "depends_on": [],
       "completed": "2026-02-27T14:37:27.192Z"
+    },
+    "T-009": {
+      "title": "[CI] Failed run 22493319630 — npm ci failed: missing package-lock.json",
+      "status": "ready",
+      "priority": "high",
+      "depends_on": [],
+      "created": "2026-03-07T06:58:50.943Z",
+      "notes": "Automated CI triage created by Akido.\n\nRepository: elvatis/openclaw-rss-feeds\nFailed run: 22493319630\nRun URL: https://github.com/elvatis/openclaw-rss-feeds/actions/runs/22493319630\n\nSummary:\nnpm ci failed: missing package-lock.json\n\nRelevant log excerpts:\n- See the Actions run for full logs: https://github.com/elvatis/openclaw-rss-feeds/actions/runs/22493319630\n\nSuggested next steps:\n- Reproduce locally: run the CI steps (install deps, tsc, lint, tests).\n- Apply the suggested fix from the autom",
+      "github_issue": 3,
+      "github_repo": "elvatis/openclaw-rss-feeds"
     }
   },
   "project": "openclaw-rss-feeds",
