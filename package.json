@@ -16,15 +16,26 @@
     "test:watch": "vitest",
     "prepublishOnly": "npm run build && npm test"
   },
-  "keywords": ["openclaw", "openclaw-plugin", "rss", "feeds", "cve", "security", "digest", "ghost"],
+  "keywords": [
+    "openclaw",
+    "openclaw-plugin",
+    "rss",
+    "feeds",
+    "cve",
+    "security",
+    "digest",
+    "ghost"
+  ],
   "author": "Elvatis <hello@example.invalid>",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/elvatis/openclaw-rss-feeds.git"
   },
   "openclaw": {
-    "extensions": ["./dist/index.js"]
+    "extensions": [
+      "./dist/index.js"
+    ]
   },
   "dependencies": {
     "jsonwebtoken": "^9.0.0",
