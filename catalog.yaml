@@ -1,8 +1,7 @@
 ﻿# OpenClaw Community Catalog Entry
-# https://github.com/openclaw/community-catalog
 #
-# To submit: copy this file into a PR against the community-catalog repo,
-# or reference it when registering via the OpenClaw CLI:
+# To submit: use the catalog channel documented by your OpenClaw distribution,
+# or register it via the OpenClaw CLI:
 #   openclaw catalog submit --from ./catalog.yaml
 
 id: openclaw-rss-feeds
@@ -12,7 +11,7 @@ description: >
   RSS/Atom feed digest plugin with optional NVD CVE enrichment,
   Ghost CMS draft publishing, and channel notifications.
 author: Elvatis
-license: MIT
+license: Apache-2.0
 repository: https://github.com/elvatis/openclaw-rss-feeds
 npm: "@elvatis_com/openclaw-rss-feeds"
 keywords:
@@ -60,3 +59,7 @@ integrations:
     description: Send digest summaries to WhatsApp, Telegram, Discord, etc.
     required: false
     config_key: notify
+  - name: TweetClaw
+    description: Optional reviewed X/Twitter posting, reply search, monitoring, follower export, media, and giveaway workflow
+    required: false
+    config_key: external

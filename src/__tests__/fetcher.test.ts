@@ -4,9 +4,11 @@ const parseURLMock = vi.fn();
 
 vi.mock('rss-parser', () => {
   return {
-    default: vi.fn().mockImplementation(() => ({
-      parseURL: parseURLMock,
-    })),
+    default: vi.fn(function Parser() {
+      return {
+        parseURL: parseURLMock,
+      };
+    }),
   };
 });
 
