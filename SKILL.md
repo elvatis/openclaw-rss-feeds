@@ -137,6 +137,18 @@ Example targets:
 - `telegram:123456789`
 - `discord:#security`
 
+## Optional X/Twitter Handoff
+
+OpenClaw agents that turn RSS or CVE digests into public launch notes, security advisories, or incident updates can pair this plugin with [TweetClaw](https://github.com/Xquik-dev/tweetclaw). Keep this plugin responsible for feed ingestion, CVE enrichment, Ghost draft publishing, and private channel notifications. Use TweetClaw only after the digest is reviewed and ready for public X/Twitter automation.
+
+TweetClaw can post tweets and tweet replies, search tweets and tweet replies for related discussion, monitor tweets, export followers, upload media, download authenticated media, and run giveaway draws through Xquik.
+
+```bash
+openclaw plugins install @xquik/tweetclaw
+```
+
+The canonical install source is the npm package [`@xquik/tweetclaw`](https://www.npmjs.com/package/@xquik/tweetclaw). The [ClawHub discovery page](https://clawhub.ai/plugins/@xquik/tweetclaw) is useful for browsing the plugin.
+
 ## Development
 
 ```bash
@@ -148,4 +160,4 @@ npm run build
 
 ## License
 
-MIT
+Apache-2.0
