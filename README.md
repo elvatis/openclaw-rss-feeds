@@ -1,5 +1,7 @@
 # @elvatis_com/openclaw-rss-feeds
 
+> **Archived and no longer maintained.** This project is no longer actively developed and has been archived. It is provided as-is under the MIT License. Feel free to fork and use it.
+
 OpenClaw plugin for RSS and Atom security digests with optional NVD CVE enrichment, Ghost CMS draft publishing, and channel notifications.
 
 ## Quick Start
@@ -208,4 +210,4 @@ It provides `isValidIssueRepoSlug()`, `resolveIssueRepo()`, and `buildGhIssueCre
 
 ## License
 
-Apache-2.0
+MIT
